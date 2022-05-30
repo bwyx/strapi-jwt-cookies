@@ -1,10 +1,10 @@
 {
-  "name": "strapi-jwt-cookies",
+  "name": "@bwyx/strapi-jwt-cookies",
   "version": "0.0.1",
   "description": "Securely use Strapi JWT on cookies",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"No test specified\""
   },
   "author": "Bayu Kurnia <hi@bayukurnia.com> (https://bayukurnia.com)",
   "license": "MIT",
