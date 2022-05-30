@@ -18,7 +18,7 @@ module.exports = (config, { strapi }) => {
       await next()
 
       if (payload) {
-        cookies.set(COOKIES.user.key, payload, COOKIES.user.options)
+        cookies.set(COOKIES.user.key, payload, COOKIES.user.opts)
       }
     } else {
       await next()
