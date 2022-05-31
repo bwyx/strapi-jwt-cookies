@@ -1,6 +1,6 @@
 {
   "name": "@bwyx/strapi-jwt-cookies",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Securely use Strapi JWT on cookies",
   "main": "index.js",
   "scripts": {
