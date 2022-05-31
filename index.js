@@ -24,9 +24,10 @@ const authRoutesWithCookieMiddleware = authRoutes.map((r) => {
   }
 })
 
-const withJwtCookie = (userConfig) => (plugin) => {
+module.exports = (userConfig) => (plugin) => {
   plugin.middlewares = {
     ...plugin.middlewares,
+    jwtCookieGetter,
     jwtCookieSetter
   }
 
@@ -43,10 +44,4 @@ const withJwtCookie = (userConfig) => (plugin) => {
   }
 
   return plugin
-}
-
-module.exports = {
-  withJwtCookie,
-  jwtCookieGetter,
-  jwtCookieSetter
 }
