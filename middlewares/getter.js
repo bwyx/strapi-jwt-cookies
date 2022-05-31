@@ -9,6 +9,7 @@ module.exports = (config, { strapi }) => {
     const headersAndSignature = cookies.get(COOKIE_NAME.HEADER_SIGNATURE)
 
     if (request.url.startsWith('/api')) {
+      // reconstruct the jwt from the cookies
       if (payload && headersAndSignature) {
         const jwt = joinJwt(payload, headersAndSignature)
         request.headers.authorization = `Bearer ${jwt}`
@@ -16,7 +17,8 @@ module.exports = (config, { strapi }) => {
 
       await next()
 
-      if (payload) {
+      // renew 'COOKIE_NAME.PAYLOAD' expire time.
+      if (payload && !request.url.startsWith('/api/auth/logout')) {
         cookies.set(COOKIE_NAME.PAYLOAD, payload, payloadOpts)
       }
     } else {

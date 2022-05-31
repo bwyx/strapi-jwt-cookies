@@ -11,6 +11,7 @@ module.exports = (config, { strapi }) => {
   return async ({ response, cookies }, next) => {
     await next()
 
+    // split jwt into cookies
     if (response.status === 200 && response.body.jwt) {
       const { payload, headersAndSignature } = splitJwt(response.body.jwt)
 
