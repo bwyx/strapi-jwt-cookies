@@ -46,7 +46,7 @@ const withJwtCookie = (userConfig) => (plugin) => {
 
   // apply user custom config strapi-server
   if (typeof userConfig === 'function') {
-    userConfig(plugin)
+    return userConfig(plugin)
   }
 
   return plugin
