@@ -37,13 +37,6 @@ const withJwtCookie = (userConfig) => (plugin) => {
     ...permissionsRoutes
   ]
 
-  const routes = plugin.routes['content-api'].routes.map((r) => ({
-    [r.method]: r.path,
-    middlewares: r.config?.middlewares ?? []
-  }))
-
-  console.log(routes)
-
   // apply user custom config strapi-server
   if (typeof userConfig === 'function') {
     return userConfig(plugin)
