@@ -24,7 +24,7 @@ const cookieOptions = ({
     path,
     domain: FRONTEND_DOMAIN ? `.${FRONTEND_DOMAIN}` : undefined,
     signed,
-    secure: true,
+    secure: process.env.NODE_ENV === 'production',
     sameSite: 'lax',
     httpOnly: !accessibleFromJavascript,
     maxAge: lifespan ? lifespan * minute : undefined,
