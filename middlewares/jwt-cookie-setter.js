@@ -1,18 +1,25 @@
 'use strict'
 
 const { splitJwt } = require('../utils')
+const {
+  COOKIE_NAME,
+  payloadOpts,
+  headersAndSignatureOpts
+} = require('../config')
 
 module.exports = (config, { strapi }) => {
-  const COOKIES = strapi.config.get('jwt-cookie.cookies')
-
   return async ({ response, cookies }, next) => {
     await next()
 
     if (response.status === 200 && response.body.jwt) {
       const { payload, headersAndSignature } = splitJwt(response.body.jwt)
 
-      cookies.set(COOKIES.user.key, payload, COOKIES.user.opts)
-      cookies.set(COOKIES.token.key, headersAndSignature, COOKIES.token.opts)
+      cookies.set(COOKIE_NAME.PAYLOAD, payload, payloadOpts)
+      cookies.set(
+        COOKIE_NAME.HEADER_SIGNATURE,
+        headersAndSignature,
+        headersAndSignatureOpts
+      )
     }
   }
 }

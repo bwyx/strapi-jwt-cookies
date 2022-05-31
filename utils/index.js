@@ -1,3 +1,5 @@
+const FRONTEND_DOMAIN = process.env.FRONTEND_DOMAIN
+
 const joinJwt = (payload, headersAndSignature) => {
   const [headers, signature] = headersAndSignature.split('.')
   return `${headers}.${payload}.${signature}`
@@ -10,7 +12,28 @@ const splitJwt = (jwt) => {
   return { payload, headersAndSignature }
 }
 
+const cookieOptions = ({
+  path = '/',
+  signed = false,
+  accessibleFromJavascript = false,
+  lifespan
+}) => {
+  const minute = 60 * 1000
+
+  return {
+    path,
+    domain: FRONTEND_DOMAIN ? `.${FRONTEND_DOMAIN}` : undefined,
+    signed,
+    secure: true,
+    sameSite: 'lax',
+    httpOnly: !accessibleFromJavascript,
+    maxAge: lifespan ? lifespan * minute : undefined,
+    expires: lifespan === 0 ? new Date(0) : undefined
+  }
+}
+
 module.exports = {
   joinJwt,
-  splitJwt
+  splitJwt,
+  cookieOptions
 }
