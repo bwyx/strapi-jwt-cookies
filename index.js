@@ -5,8 +5,8 @@ const userRoutes = require('@strapi/plugin-users-permissions/server/routes/conte
 const roleRoutes = require('@strapi/plugin-users-permissions/server/routes/content-api/role')
 const permissionsRoutes = require('@strapi/plugin-users-permissions/server/routes/content-api/permissions')
 
-const jwtCookieGetter = require('./middlewares/jwt-cookie-getter')
-const jwtCookieSetter = require('./middlewares/jwt-cookie-setter')
+const jwtCookieGetter = require('./middlewares/getter')
+const jwtCookieSetter = require('./middlewares/setter')
 
 const authRoutesWithCookieMiddleware = authRoutes.map((r) => {
   const middlewares = r.config?.middlewares ?? []
