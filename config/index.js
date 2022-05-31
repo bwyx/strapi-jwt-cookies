@@ -1,5 +1,7 @@
 const APP_NAME = process.env.APP_NAME
 
+const { cookieOptions } = require('../utils')
+
 const COOKIE_NAME = {
   PAYLOAD: APP_NAME ? `${APP_NAME}_user` : 'user',
   HEADER_SIGNATURE: APP_NAME ? `${APP_NAME}_token` : 'token'
