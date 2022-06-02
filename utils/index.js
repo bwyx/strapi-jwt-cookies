@@ -1,4 +1,9 @@
+'use strict'
+
 const FRONTEND_DOMAIN = process.env.FRONTEND_DOMAIN
+
+const isFromFrontend = (req) =>
+  req.headers['x-requested-with'] === 'XMLHttpRequest'
 
 const joinJwt = (payload, headersAndSignature) => {
   const [headers, signature] = headersAndSignature.split('.')
@@ -33,6 +38,7 @@ const cookieOptions = ({
 }
 
 module.exports = {
+  isFromFrontend,
   joinJwt,
   splitJwt,
   cookieOptions

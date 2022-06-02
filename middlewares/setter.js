@@ -1,6 +1,6 @@
 'use strict'
 
-const { splitJwt } = require('../utils')
+const { isFromFrontend, splitJwt } = require('../utils')
 const {
   COOKIE_NAME,
   payloadOpts,
@@ -8,11 +8,15 @@ const {
 } = require('../config')
 
 module.exports = (config, { strapi }) => {
-  return async ({ response, cookies }, next) => {
+  return async ({ request, response, cookies }, next) => {
     await next()
 
     // split jwt into cookies
-    if (response.status === 200 && response.body.jwt) {
+    if (
+      isFromFrontend(request) &&
+      response.status === 200 &&
+      response.body.jwt
+    ) {
       const { payload, headersAndSignature } = splitJwt(response.body.jwt)
 
       cookies.set(COOKIE_NAME.PAYLOAD, payload, payloadOpts)
