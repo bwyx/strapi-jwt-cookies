@@ -26,11 +26,19 @@ const authRoutesWithCookieMiddleware = authRoutes.map((r) => {
   }
 })
 
-const logout = (ctx) => {
-  ctx.cookies.set(COOKIE_NAME.PAYLOAD)
-  ctx.cookies.set(COOKIE_NAME.HEADER_SIGNATURE)
+const logout = {
+  route: {
+    method: 'POST',
+    path: '/auth/logout',
+    handler: 'auth.logout',
+    config: { auth: false, prefix: '' }
+  },
+  controller: (ctx) => {
+    ctx.cookies.set(COOKIE_NAME.PAYLOAD)
+    ctx.cookies.set(COOKIE_NAME.HEADER_SIGNATURE)
 
-  ctx.response.status = 204
+    ctx.response.status = 204
+  }
 }
 
 module.exports = (userConfig) => (plugin) => {
@@ -42,16 +50,12 @@ module.exports = (userConfig) => (plugin) => {
 
   plugin.controllers.auth = {
     ...plugin.controllers.auth,
-    logout
+    logout: logout.controller
   }
 
   plugin.routes['content-api'].routes = [
-    ...authRoutesWithCookieMiddleware.concat({
-      method: 'POST',
-      path: '/auth/logout',
-      handler: 'auth.logout',
-      config: { auth: false, prefix: '' }
-    }),
+    ...authRoutesWithCookieMiddleware,
+    logout.route,
     ...userRoutes,
     ...roleRoutes,
     ...permissionsRoutes
