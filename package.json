@@ -9,6 +9,6 @@
   "author": "Bayu Kurnia <hi@bayukurnia.com> (https://bayukurnia.com)",
   "license": "MIT",
   "peerDependencies": {
-    "@strapi/plugin-users-permissions": "4.1.12"
+    "@strapi/plugin-users-permissions": "^4.1.12"
   }
 }
