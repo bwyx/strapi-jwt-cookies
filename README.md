@@ -2,7 +2,7 @@
 
 Securely use [users-permissions](https://github.com/strapi/strapi/tree/master/packages/plugins/users-permissions/)'s JWT on cookies.
 
-[![@bwyx/strapi-jwt-cookies on npm](https://flat.badgen.net/npm/v/@bwyx/strapi-jwt-cookies?icon=npm)](https://www.npmjs.com/package@bwyx/strapi-jwt-cookies)
+[![@bwyx/strapi-jwt-cookies on npm](https://flat.badgen.net/npm/v/@bwyx/strapi-jwt-cookies?icon=npm)](https://www.npmjs.com/package/@bwyx/strapi-jwt-cookies)
 
 ## How this package works
 
@@ -16,7 +16,7 @@ This package extends the `@strapi/plugin-users-permissions` core plugin via [Ext
 ### Features
 
 - Split JWT into two cookies, httpOnly for JWT `header.signature` and javascript-accessible cookie for the `payload`, so frontend can easily read the JWT payload. read it more [here](https://medium.com/lightrail/getting-token-authentication-right-in-a-stateless-single-page-application-57d0c6474e3)
-- Automatically logout on user inactivity by [setting cookie expires](#configuration)
+- Automatically logout on user inactivity by [setting cookie expires](#configurations)
 
 ### How About CSRF?
 
@@ -74,7 +74,7 @@ By default, frontend users will be logged out after **30 mins of inactivy** (not
 COOKIE_PAYLOAD_LIFESPAN_MINUTES=30
 ```
 
-You can restrict the cookie to your specific frontend domain (recommended): 
+You can restrict the cookie to your specific frontend domain (recommended):
 
 ```bash
 FRONTEND_DOMAIN=myfrontend.com
