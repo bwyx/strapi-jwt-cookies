@@ -13,6 +13,11 @@ This package extends the `@strapi/plugin-users-permissions` core plugin via [Ext
 ### Features
 - Split JWT into two cookies, httpOnly for JWT `header.signature` and javascript-accessible cookie for the `payload`, so frontend can easily read the JWT payload. read it more [here](https://medium.com/lightrail/getting-token-authentication-right-in-a-stateless-single-page-application-57d0c6474e3)
 
+### How About CSRF?
+Note that this package **doesn't** add a CSRF prevention mechanism, but it **does** ensure the request is from frontend by using [SameSite](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie/SameSite) flag sets to `lax`,
+and by checking request custom headers which only can be sent from same CORS domain.
+- set `X-Requested-With` to `XMLHttpRequest` to be able receive and validate jwt cookies on the server
+
 ## Usage
 
 **Install**
