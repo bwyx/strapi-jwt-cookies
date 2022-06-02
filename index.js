@@ -8,7 +8,7 @@ const permissionsRoutes = require('@strapi/plugin-users-permissions/server/route
 const jwtCookieGetter = require('./middlewares/getter')
 const jwtCookieSetter = require('./middlewares/setter')
 
-const { COOKIE_NAME } = require('./config')
+const { COOKIE_NAME, destroyCookieOpts } = require('./config')
 
 const authRoutesWithCookieMiddleware = authRoutes.map((r) => {
   const middlewares = r.config?.middlewares ?? []
@@ -34,8 +34,8 @@ const logout = {
     config: { auth: false, prefix: '' }
   },
   controller: (ctx) => {
-    ctx.cookies.set(COOKIE_NAME.PAYLOAD)
-    ctx.cookies.set(COOKIE_NAME.HEADER_SIGNATURE)
+    ctx.cookies.set(COOKIE_NAME.PAYLOAD, '', destroyCookieOpts)
+    ctx.cookies.set(COOKIE_NAME.HEADER_SIGNATURE, '', destroyCookieOpts)
 
     ctx.response.status = 204
   }

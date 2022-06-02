@@ -16,8 +16,13 @@ const headersAndSignatureOpts = cookieOptions({
   accessibleFromJavascript: false
 })
 
+const destroyCookieOpts = cookieOptions({
+  lifespan: 0
+})
+
 module.exports = {
   COOKIE_NAME,
   payloadOpts,
-  headersAndSignatureOpts
+  headersAndSignatureOpts,
+  destroyCookieOpts
 }
