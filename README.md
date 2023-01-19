@@ -11,7 +11,7 @@ This package extends the `@strapi/plugin-users-permissions` core plugin via [Ext
 ### What this package does to the plugin
 
 - Adds [two middlewares](https://github.com/bwyx/strapi-jwt-cookies/blob/80414f5bcd44217f2d6af6b78c22a8c4bce87067/index.js#L37) and applies the `jwtCookieSetter` middleware to [auth routes](https://github.com/bwyx/strapi-jwt-cookies/blob/80414f5bcd44217f2d6af6b78c22a8c4bce87067/index.js#L13) only, so it wont affect the other routes.
-- Added one [route](https://github.com/bwyx/strapi-jwt-cookies/blob/80414f5bcd44217f2d6af6b78c22a8c4bce87067/index.js#L49) and [logout controller](https://github.com/bwyx/strapi-jwt-cookies/blob/80414f5bcd44217f2d6af6b78c22a8c4bce87067/index.js#L43) to remove cookie server-side: `POST /api/auth/logout`
+- Adds one [route](https://github.com/bwyx/strapi-jwt-cookies/blob/80414f5bcd44217f2d6af6b78c22a8c4bce87067/index.js#L49) and [logout controller](https://github.com/bwyx/strapi-jwt-cookies/blob/80414f5bcd44217f2d6af6b78c22a8c4bce87067/index.js#L43) to remove cookie server-side: `POST /api/auth/logout`
 
 ### Features
 
@@ -87,6 +87,9 @@ APP_NAME=myapp
 ```
 
 then the cookies will be **myapp_user** and **myapp_token**
+
+### TODO
+- [ ] Add test (?)
 
 ### References
 
