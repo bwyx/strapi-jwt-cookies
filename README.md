@@ -2,7 +2,7 @@
 
 Securely use [users-permissions](https://github.com/strapi/strapi/tree/master/packages/plugins/users-permissions/)'s JWT on cookies. Compatible with Strapi v4 and requires `@strapi/plugin-users-permissions@^4.1.12`
 
-[![@bwyx/strapi-jwt-cookies on npm](https://flat.badgen.net/npm/v/@bwyx/strapi-jwt-cookies?icon=npm)](https://www.npmjs.com/package/@bwyx/strapi-jwt-cookies)
+[![@rogdex24/strapi-jwt-cookies on npm](https://flat.badgen.net/npm/v/@rogdex24/strapi-jwt-cookies?icon=npm)](https://www.npmjs.com/package/@rogdex24/strapi-jwt-cookies)
 
 ## How this package works
 
@@ -28,7 +28,7 @@ and by checking request custom headers which only can be sent from the same CORS
 ## Install
 
 ```bash
-npm install --save @bwyx/strapi-jwt-cookies
+npm install --save @rogdex24/strapi-jwt-cookies
 ```
 
 Create file under directory `src/extensions/users-permissions/strapi-server.js`:
@@ -36,14 +36,14 @@ Create file under directory `src/extensions/users-permissions/strapi-server.js`:
 ```js
 // src/extensions/users-permissions/strapi-server.js
 
-module.exports = require('@bwyx/strapi-jwt-cookies')(); 
+module.exports = require('@rogdex24/strapi-jwt-cookies')(); 
 
 ```
 
 If you already extend the `strapi-server.js`, you could wrap your function like this:
 
 ```js
-const withJwtCookie = require('@bwyx/strapi-jwt-cookies');
+const withJwtCookie = require('@rogdex24/strapi-jwt-cookies');
 
 module.exports = withJwtCookie((plugin) => {
   // some customization
