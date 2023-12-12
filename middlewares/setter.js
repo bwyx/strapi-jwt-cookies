@@ -13,7 +13,7 @@ module.exports = (config, { strapi }) => {
 
     // split jwt into cookies
     if (
-      isFromFrontend(request) &&
+      // isFromFrontend(request) &&
       response.status === 200 &&
       response.body.jwt
     ) {
