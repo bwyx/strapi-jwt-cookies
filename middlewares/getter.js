@@ -5,7 +5,9 @@ const { COOKIE_NAME, payloadOpts } = require('../config')
 
 module.exports = (config, { strapi }) => {
   return async ({ request, cookies }, next) => {
-    if (isFromFrontend(request) && request.url.startsWith('/api')) {
+    if (
+      // isFromFrontend(request) && 
+      request.url.startsWith('/api')) {
       const payload = cookies.get(COOKIE_NAME.PAYLOAD)
       const headersAndSignature = cookies.get(COOKIE_NAME.HEADER_SIGNATURE)
 
