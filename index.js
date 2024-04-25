@@ -1,9 +1,9 @@
 'use strict'
 
-const authRoutes = require('@strapi/plugin-users-permissions/server/routes/content-api/auth')
-const userRoutes = require('@strapi/plugin-users-permissions/server/routes/content-api/user')
-const roleRoutes = require('@strapi/plugin-users-permissions/server/routes/content-api/role')
-const permissionsRoutes = require('@strapi/plugin-users-permissions/server/routes/content-api/permissions')
+const authRoutes = require('../../@strapi/plugin-users-permissions/server/routes/content-api/auth')
+const userRoutes = require('../../@strapi/plugin-users-permissions/server/routes/content-api/user')
+const roleRoutes = require('../../@strapi/plugin-users-permissions/server/routes/content-api/role')
+const permissionsRoutes = require('../../@strapi/plugin-users-permissions/server/routes/content-api/permissions')
 
 const jwtCookieGetter = require('./middlewares/getter')
 const jwtCookieSetter = require('./middlewares/setter')
